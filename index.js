@@ -4,21 +4,31 @@ const AWS = require('aws-sdk')
 const elasticsearch = require('elasticsearch')
 const httpAWSESClass = require('http-aws-es')
 
-// serverless-offline will set IS_OFFLINE based on whether we're offline
-const devMode = process.env.IS_OFFLINE === 'true'
+module.exports = {
+  createClient: createClient,
+  getOptions: getOptions
+}
 
-function createClient (options) {
+function getOptions (options) {
+  options = options || {}
+
+  // serverless-offline will set IS_OFFLINE based on whether we're offline
+  const devMode = Boolean(process.env.IS_OFFLINE)
+
   const prefix = options.envPrefix || 'AWS'
   const region = options.region || process.env[`${prefix}_REGION`]
   const host = options.host || process.env[`${prefix}_HOST`]
 
-  if (!region) { throw new Error('region is required') }
-  if (!host) { throw new Error('host is required') }
+  delete (options.region) // this doesn't belong in ES options
+
+  if (!region) { throw new TypeError('region is required') }
+  if (!host) { throw new TypeError('host is required') }
 
   const credentials = options.credentials || new AWS.EnvironmentCredentials(prefix)
 
   const config = Object.assign({}, options, {
     host: host,
+    region: region,
     amazonES: {
       region,
       credentials
@@ -30,7 +40,9 @@ function createClient (options) {
     config.connectionClass = httpAWSESClass
   }
 
-  return new elasticsearch.Client(config)
+  return config
 }
 
-module.exports = createClient
+function createClient (options) {
+  return new elasticsearch.Client(getOptions(options))
+}
