@@ -1,6 +1,6 @@
 {
   "name": "serverless-elasticsearch-client",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Elasticsearch client for AWS that plays nicely with serverless-offline and signed requests",
   "main": "index.js",
   "scripts": {
