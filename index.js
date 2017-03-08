@@ -28,7 +28,6 @@ function getOptions (options) {
 
   const config = Object.assign({}, options, {
     host: host,
-    region: region,
     amazonES: {
       region,
       credentials
