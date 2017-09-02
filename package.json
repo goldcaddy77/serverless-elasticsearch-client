@@ -1,17 +1,18 @@
 {
   "name": "serverless-elasticsearch-client",
-  "version": "1.0.1",
+  "version": "0.0.0-development",
   "description": "Elasticsearch client for AWS that plays nicely with serverless-offline and signed requests",
   "main": "index.js",
   "scripts": {
     "precommit": "npm test",
     "prepush": "npm test",
     "preversion": "npm test",
-    "test": "./node_modules/.bin/ava --verbose"
+    "test": "./node_modules/.bin/ava --verbose",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/goldcaddy77/serverless-elasticsearch-client.git"
+    "url": "https://github.com/goldcaddy77/serverless-elasticsearch-client.git"
   },
   "keywords": [
     "elasticsearch",
@@ -32,6 +33,11 @@
   "devDependencies": {
     "ava": "^0.18.2",
     "aws-sdk": "^2.23.0",
-    "husky": "^0.13.2"
+    "condition-circle": "^1.5.0",
+    "husky": "^0.13.2",
+    "semantic-release": "^7.0.2"
+  },
+  "release": {
+    "verifyConditions": "condition-circle"
   }
 }
