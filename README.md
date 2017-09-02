@@ -3,6 +3,9 @@
 [![serverless](https://img.shields.io/badge/serverless-1.0-dda415.svg)](http://www.serverless.com)
 [![npm version](https://img.shields.io/npm/v/serverless-elasticsearch-client.svg)](https://www.npmjs.org/package/serverless-elasticsearch-client)
 [![Standard - JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-dbb30b.svg)](https://standardjs.com)
+[![CircleCI](https://circleci.com/gh/goldcaddy77/serverless-elasticsearch-client/tree/master.svg?style=shield)](https://circleci.com/gh/goldcaddy77/serverless-elasticsearch-client/tree/master)
+[![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
+
 
 ## AWS Elasticsearch Client
 
