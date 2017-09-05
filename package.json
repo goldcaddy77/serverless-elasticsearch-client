@@ -4,9 +4,8 @@
   "description": "Elasticsearch client for AWS that plays nicely with serverless-offline and signed requests",
   "main": "index.js",
   "scripts": {
-    "precommit": "npm test",
-    "prepush": "npm test",
-    "preversion": "npm test",
+    "precommit": "lint-staged && npm test",
+    "preversion": "lint-staged && npm test",
     "test": "./node_modules/.bin/ava --verbose",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
@@ -14,12 +13,7 @@
     "type": "git",
     "url": "https://github.com/goldcaddy77/serverless-elasticsearch-client.git"
   },
-  "keywords": [
-    "elasticsearch",
-    "aws",
-    "serverless",
-    "serverless-offline"
-  ],
+  "keywords": ["elasticsearch", "aws", "serverless", "serverless-offline"],
   "author": "Dan Caddigan",
   "license": "ISC",
   "bugs": {
@@ -35,7 +29,16 @@
     "aws-sdk": "^2.23.0",
     "condition-circle": "^1.5.0",
     "husky": "^0.13.2",
+    "lint-staged": "^4.1.0",
+    "prettier": "^1.6.1",
     "semantic-release": "^7.0.2"
+  },
+  "lint-staged": {
+    "*.{js,json}": ["prettier --write", "git add"]
+  },
+  "prettier": {
+    "printWidth": 120,
+    "singleQuote": true
   },
   "release": {
     "verifyConditions": "condition-circle"
