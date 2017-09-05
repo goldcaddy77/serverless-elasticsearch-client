@@ -11,6 +11,6 @@ dependencies:
     - ~/.cache/yarn
 test:
   override:
-    - yarn test
+    - yarn run lint-staged && yarn test
   post:
     - yarn run semantic-release || true
